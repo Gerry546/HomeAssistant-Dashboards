@@ -17,3 +17,8 @@ cards:
         template:
           - light
           - icon_hang
+      - type: custom:button-card
+        entity: light.small_lamp
+        template:
+          - light
+          - icon_lamp
