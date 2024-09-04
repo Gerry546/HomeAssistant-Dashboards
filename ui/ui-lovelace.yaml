@@ -1,0 +1,10 @@
+title: Dashboard
+
+views:
+  - !include views/summary.yaml
+
+button_card_templates: !include_dir_merge_named templates/button-card/
+
+background: >-
+  linear-gradient(to bottom, rgba(var(--rgb-primary-color),.2),
+  var(--primary-background-color))
