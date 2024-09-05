@@ -1,0 +1,250 @@
+# LIVE TILES
+
+# Live Tile Card
+# This is the base of various tiles.
+
+live_tile_card:
+  variables:
+    aspect_ratio: 1/1
+  color_type: card
+  size: 20px
+  show_state: true
+  show_label: true
+  state:
+    - value: 'off'
+      styles:
+        card:
+          - background-color: var(--ha-card-background)
+        state:
+          - color: var(--primary-text-color)
+        name:
+          - color: var(--primary-text-color)
+        label:
+          - color: var(--primary-text-color)
+          - opacity: 0.67
+    - value: unavailable
+      styles:
+        card:
+          - background-color: var(--ha-card-background)
+        state:
+          - color: var(--disabled-text-color)
+        name:
+          - color: var(--disabled-text-color)
+        label:
+          - color: var(--disabled-text-color)
+          - opacity: 0.67
+    - operator: default
+      styles:
+        card:
+          - background-color: var(--ha-card-background)
+        state:
+          - color: var(--primary-text-color)
+        name:
+          - color: var(--primary-text-color)
+        label:
+          - color: var(--primary-text-color)
+          - opacity: 0.67
+  state_display: '[[[ if (entity != undefined) { return entity.state.replace("_", " ") } ]]]'
+  hold_action:
+    action: more-info
+  styles:
+    grid:
+      - grid-template-areas: |
+          "s s"
+          "l l"
+          "n i"
+      - grid-template-columns: 1fr min-content
+      - grid-template-rows: min-content auto min-content
+    card:
+      - aspect-ratio: '[[[ return variables.aspect_ratio ]]]'
+      - padding: 0
+    name:
+      - font-size: var(--body-font-size)
+      - padding: 4px 4px 10px 12px
+      - white-space: normal
+      - text-align: left
+      - justify-self: start
+      - align-self: end
+    state:
+      - font-size: var(--h3-font-size)
+      - justify-self: start
+      - padding: 4px 12px 0px 12px
+      - font-weight: var(--h3-font-weight)
+      - align-self: start
+      - text-overflow: clip
+      - display: -webkit-box
+      - -webkit-line-clamp: 2
+      - -webkit-box-orient: vertical
+      - text-transform: capitalize
+    img_cell:
+      - align-self: end
+      - text-align: right
+      - padding: 4px 8px 4px 4px
+      - height: 28px
+    label:
+      - font-size: var(--body-font-size)
+      - justify-self: start
+      - padding: 0px 12px
+      - align-self: start
+      - opacity: 0.67
+      - white-space: normal
+      - text-align: left
+      - height: 100%
+
+# Live Tile (with Graph)
+
+live_tile_with_graph:
+  variables:
+    picture: '[[[ return entity.attributes.entity_picture ]]]'
+    hours_to_show: 12
+    group_by: interval
+    points_per_hour: 4
+    graph_height: 144
+    line_width: 4
+    line_color: var(--rgb-accent-color)
+    graph: line
+    lower_bound: ~10000
+    upper_bound: ~0
+    bar_spacing: 50
+    aggregate_func: avg
+  template: live_tile_card
+  custom_fields:
+    graph:
+      card:
+        type: custom:mini-graph-card
+        entities:
+          - entity: '[[[ return entity.entity_id ]]]'
+            aggregate_func: '[[[ return variables.aggregate_func ]]]'
+        show:
+          graph: '[[[ return variables.graph ]]]'
+          name: false
+          icon: false
+          state: false
+          labels: false
+          points: false
+        line_width: '[[[ return variables.line_width ]]]'
+        line_color: '[[[ return `rgb(${variables.line_color}` ]]]'
+        hours_to_show: '[[[ return variables.hours_to_show ]]]'
+        group_by: '[[[ return variables.group_by ]]]'
+        points_per_hour: '[[[ return variables.points_per_hour ]]]'
+        animate: true
+        upper_bound: '[[[ return variables.upper_bound ]]]'
+        lower_bound: '[[[ return variables.lower_bound ]]]'
+        height: '[[[ return variables.graph_height ]]]'
+        bar_spacing: '[[[ return variables.bar_spacing ]]]'
+        card_mod:
+          style: |
+            ha-card { background: none; border-radius: 0; }
+  styles:
+    grid:
+      - grid-template-areas: '"s s" "l l" "graph graph" "n i"'
+      - grid-template-columns: 1fr min-content
+      - grid-template-rows: min-content auto 0 min-content
+    card:
+      - color: var(--primary-text-color)
+      - background: var(--ha-card-background)
+    custom_fields:
+      graph:
+        - position: absolute
+        - bottom: 0
+        - width: 100%
+        - border-bottom: |
+            [[[
+              if (variables.graph == "line") { return `3.25rem solid rgba(${variables.line_color}, .15)` } 
+              else { return "3.25rem solid transparent" }
+            ]]]
+        - border-radius: 0
+        #   # rgba(var(--rgb-accent-color),.15)
+    name:
+      - z-index: 2
+    icon:
+      - z-index: 2
+
+# Live Tile (with State Unit)
+
+live_tile_with_state_unit:
+  variables:
+    unit: '[[[ return entity.attributes.unit_of_measurement ]]]'
+    state_display: '[[[ return Math.round(entity.state) ]]]'
+  state_display: |
+    [[[
+      return variables.state_display + "<span style='font-size: var(--h6-font-size); font-weight: var(--h6-font-weight); text-transform: uppercase; opacity: .6;'> " + variables.unit + "</span>"
+    ]]]
+  styles:
+    state:
+      - text-overflow: inherit
+
+# Live Tile (with Graph Threshold)
+# Card becomes increasingly highlighted as entity state reaches the upper or lower bound.
+
+live_tile_with_graph_threshold:
+  variables:
+    line_color_upper_bound: 75
+    line_color_upper_bound_max: 100
+    line_color_lower_bound: 25
+    line_color_lower_bound_min: 0
+  custom_fields:
+    graph:
+      card:
+        line_color: |
+          [[[
+            if (parseFloat(entity.state) >= variables.line_color_upper_bound_max) { return "var(--primary-text-color)" }
+            if (parseFloat(entity.state) <= variables.line_color_lower_bound_min) { return "var(--primary-text-color)" }
+            return `rgb(${variables.line_color}`
+          ]]]
+        # color_thresholds_transition: hard
+        color_thresholds: |
+          [[[
+            var stateValue = parseFloat(entity.state)
+            if ((stateValue >= variables.line_color_upper_bound_max) || (stateValue <= variables.line_color_lower_bound_min)) {
+              return []
+            } else {
+              var primaryTextColor = '#' + getComputedStyle(document.body).getPropertyValue('--rgb-primary-text-color').split(',').map(x => parseInt(x).toString(16).padStart(2, '0')).join('')
+              var accentColor = getComputedStyle(document.body).getPropertyValue('--accent-color')
+            
+              return [
+                {
+                  value: variables.line_color_lower_bound,
+                  color: accentColor
+                },
+                {
+                  value: variables.line_color_lower_bound,
+                  color: primaryTextColor
+                },
+                {
+                  value: variables.line_color_upper_bound,
+                  color: primaryTextColor
+                },
+                {
+                  value: variables.line_color_upper_bound,
+                  color: accentColor
+                }            
+              ]
+            }
+          ]]]
+  styles:
+    grid:
+      - background: |
+          [[[
+            var stateValue = parseFloat(entity.state)
+            if (stateValue >= variables.line_color_upper_bound_max) { return "var(--accent-color)"}
+            if (stateValue <= variables.line_color_lower_bound_min) { return "var(--accent-color)"}
+            if (stateValue >= variables.line_color_upper_bound) {
+              var percent = (Math.min((stateValue - variables.line_color_upper_bound) / (variables.line_color_upper_bound_max - variables.line_color_upper_bound), 1) * .5)
+              return `rgba(var(--rgb-primary-color), ${percent})`
+            }
+            if (stateValue <= variables.line_color_lower_bound) {
+              var percent = (Math.min((variables.line_color_lower_bound - stateValue) / (variables.line_color_lower_bound - variables.line_color_lower_bound_min), 1) * .5)
+              return `rgba(var(--rgb-primary-color), ${percent})`
+            }
+            return "var(--ha-card-background)"
+          ]]]
+    custom_fields:
+      graph:
+        - border-bottom: |
+            [[[
+              var lineColor = "var(--rgb-accent-color)"
+              if (parseFloat(entity.state) >= variables.line_color_upper_bound_max) { lineColor = "var(--rgb-primary-text-color)" }
+              if (parseFloat(entity.state) <= variables.line_color_lower_bound_min) { lineColor = "var(--rgb-primary-text-color)" }
+              if (variables.graph == "line") { return `3.25rem solid rgba(${lineColor}, .15)` } else { return "3.25rem solid transparent" }
+            ]]]

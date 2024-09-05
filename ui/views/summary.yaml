@@ -58,6 +58,7 @@ cards:
           margin: 0
       margin: 0
     cards:
-      - !include ../widgets/header.yaml
+      - !include ../widgets/summary/header.yaml
+      - !include ../widgets/summary/energy.yaml
     view_layout:
       grid-area: cc
