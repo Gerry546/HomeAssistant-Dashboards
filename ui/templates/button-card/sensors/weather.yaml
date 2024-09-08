@@ -1,0 +1,25 @@
+weather_waqi:
+  state_display: |
+    [[[ return Math.round(entity.state) ]]]
+  name: AQI
+  icon: mdi:molecule
+  label: '[[[ return variables.level ]]]'
+  show_units: false
+  styles:
+    card:
+      - background: |
+          [[[
+            if (entity.state > 300) {
+              return "rgba(var(--rgb-accent-color),1)"
+            } else if (entity.state > 200) {
+              return "rgba(var(--rgb-accent-color),1)"
+            } else if (entity.state > 150) {
+              return "rgba(var(--rgb-primary-color),1)"
+            } else if (entity.state > 100) {
+              return "rgba(var(--rgb-primary-color),.66)"
+            } else if (entity.state > 50) {
+              return "rgba(var(--rgb-primary-color),.33)"
+            } else {
+              return "var(--ha-card-background)"
+            }
+          ]]]

@@ -63,9 +63,51 @@ cards:
           margin: 0
       margin: 0
     cards:
-      - !include ../grid-areas/summary/area_h.yaml
-      - !include ../grid-areas/summary/area_c1.yaml
-      - !include ../grid-areas/summary/area_c3.yaml
-      - !include ../grid-areas/summary/area_masonry.yaml
+      - !include ../sections/summary/section_header.yaml
+      - type: custom:layout-card
+        layout_type: custom:grid-layout
+        layout:
+          margin: 0
+          card_margin: 1px
+        view_layout:
+          grid-area: c1
+        cards:
+          - !include ../sections/summary/section_energy.yaml
+      - type: 'custom:layout-card'
+        layout_type: 'custom:grid-layout'
+        layout:
+          margin: 0
+          padding: 0
+          card_margin: 1px
+        view_layout:
+          grid-area: c3
+          show:
+            mediaquery: '(min-width: 1128px), (max-width:799.99px)'
+        cards:
+          - !include ../sections/summary/section_network.yaml
+      - type: 'custom:layout-card'
+        layout_type: 'custom:grid-layout'
+        layout:
+          grid-template-areas: '". mc ."'
+          grid-template-columns: 0 auto 0
+          margin: -1px
+          mediaquery:
+            '(max-width: 511.99px)':
+                grid-template-columns: 16px auto 16px
+        view_layout:
+          grid-column: 1/-1
+        cards:
+          - type: 'custom:layout-card'
+            layout_type: 'custom:horizontal-layout'
+            layout:
+              width: 256
+              max_width: 512
+              max_cols: 5
+              card_margin: 0 16px
+              margin: 0 -16px
+            view_layout:
+              grid-area: mc
+            cards:
+               - !include ../sections/summary/section_weather.yaml
     view_layout:
       grid-area: cc

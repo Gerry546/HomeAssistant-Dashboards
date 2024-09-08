@@ -1,0 +1,10 @@
+type: custom:layout-card
+layout_type: custom:grid-layout
+layout:
+  grid-template-columns: repeat(auto-fill, [col-start] minmax(112px, 1fr) [col-end])
+  margin: 0
+  card_margin: 1px
+  padding: 0
+cards:
+  - !include ../../cards/energy_header.yaml
+  - !include ../../cards/total_energy_graph.yaml
