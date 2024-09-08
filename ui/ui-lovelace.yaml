@@ -2,6 +2,7 @@ title: Dashboard
 
 views:
   - !include views/summary.yaml
+  - !include views/energy.yaml
 
 button_card_templates: !include_dir_merge_named templates/button-card/
 

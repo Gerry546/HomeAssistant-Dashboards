@@ -137,7 +137,11 @@ live_tile_with_graph:
             ha-card { background: none; border-radius: 0; }
   styles:
     grid:
-      - grid-template-areas: '"s s" "l l" "graph graph" "n i"'
+      - grid-template-areas: |
+          "s s" 
+          "l l" 
+          "graph graph" 
+          "n i"
       - grid-template-columns: 1fr min-content
       - grid-template-rows: min-content auto 0 min-content
     card:
@@ -248,3 +252,54 @@ live_tile_with_graph_threshold:
               if (parseFloat(entity.state) <= variables.line_color_lower_bound_min) { lineColor = "var(--rgb-primary-text-color)" }
               if (variables.graph == "line") { return `3.25rem solid rgba(${lineColor}, .15)` } else { return "3.25rem solid transparent" }
             ]]]
+
+# Live Tile (with Long State)
+
+live_tile_with_long_state:
+  styles:
+    state:
+      - font-size: var(--h4-font-size)
+      - font-weight: 100
+      - padding: 8px 12px 2px 12px
+      - white-space: normal
+      - text-align: left
+      - line-height: 24px
+
+# Live Tile (with State Countdown)
+
+live_tile_with_state_countdown:
+  variables:
+    duration: 60
+  template: live_tile_with_last_changed_label
+  state:
+    - value: 'off'
+      styles:
+        card: null
+  styles:
+    grid:
+      - background: |
+          [[[
+            var diff = (new Date() - new Date(entity.last_changed)) / 1000
+            var opacity = 1 - (diff / variables.duration)
+            if (diff > variables.duration) { return '' }
+            return 'rgba(var(--rgb-primary-color),' + opacity + ')'
+          ]]]
+      - color: |
+          [[[
+            var diff = (new Date() - new Date(entity.last_changed)) / 1000
+            if (diff > variables.duration / 2) { return 'var(--primary-text-color)' } else { return 'var(--accent-text-color)'}
+          ]]]
+
+# Live Tile (with Last Changed Label)
+
+live_tile_with_last_changed_label:
+  show_label: true
+  triggers_update: all
+  label: |
+    [[[
+      var diff = (new Date() - new Date(entity.last_changed)) / 1000 / 60
+      if (isNaN(diff)) { return 'Unknown' }
+      if (diff <= 0.05) { return 'Just now' }
+      else if (diff <= 1) { return Math.round(diff * 60) + ' seconds ago' }
+      else { return moment(entity.last_changed).fromNow() }
+    ]]]

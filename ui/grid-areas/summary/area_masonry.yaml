@@ -1,0 +1,23 @@
+type: custom:layout-card
+layout_type: custom:grid-layout
+layout:
+  grid-template-areas: '". mc ."'
+  grid-template-columns: 0 auto 0
+  margin: -1px
+  mediaquery:
+    '(max-width: 511.99px)':
+      grid-template-areas: 16px auto 16px
+view_layout:
+  grid-column: 1/-1
+cards:
+  - type: custom:layout-card
+    layout_type: 'custom:horizontal-layout'
+    layout:
+      width: 256
+      max_width: 512
+      max_cols: 5
+      card_margin: 0 16px
+      margin: 0 -16px
+    view_layout:
+      grid-area: mc
+    cards: []

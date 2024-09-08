@@ -11,6 +11,11 @@ layout:
   margin: 0
   card_margin: 0
   mediaquery:
+    '(min-width: 3000px)':
+      grid-template-columns: auto 2800px auto
+      grid-template-areas: |
+        ". cc ."
+        ". .  ."
     '(min-width: 1704px)':
       grid-template-columns: auto 1600px auto
       grid-template-areas: |
@@ -58,7 +63,9 @@ cards:
           margin: 0
       margin: 0
     cards:
-      - !include ../widgets/summary/header.yaml
-      - !include ../widgets/summary/energy.yaml
+      - !include ../grid-areas/summary/area_h.yaml
+      - !include ../grid-areas/summary/area_c1.yaml
+      - !include ../grid-areas/summary/area_c3.yaml
+      - !include ../grid-areas/summary/area_masonry.yaml
     view_layout:
       grid-area: cc

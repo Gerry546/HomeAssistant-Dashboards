@@ -1,0 +1,21 @@
+type: 'custom:button-card'
+template:
+  - live_tile_card
+  - live_tile_with_long_state
+  - live_tile_with_state_countdown
+entity: binary_sensor.estalor_com
+name: WAN
+state:
+  - value: 'off'
+    styles:
+      card:
+        - background: var(--primary-color)
+  - value: 'on'
+    styles:
+      card:
+        - background: var(--ha-card-background)
+        - color: var(--primary-text-color)
+variables:
+  aspect_ratio: '[[[ return Math.round(this.offsetWidth / 112) ]]]'
+view_layout:
+  grid-column: 1/-2

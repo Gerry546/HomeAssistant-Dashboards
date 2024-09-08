@@ -1,0 +1,22 @@
+type: custom:layout-card
+layout_type: custom:horizontal-layout
+cards:
+  - type: custom:mushroom-person-card
+    entity: person.tom_geelen
+    card_mod:
+      style: 'ha-card {background: none;}'
+    use_entity_picture: true
+    view_layout: null
+  - type: custom:mushroom-person-card
+    entity: person.willeke_traa
+    card_mod:
+      style: 'ha-card {background: none;}'
+    use_entity_picture: true
+    view_layout: null
+layout:
+  width: 160
+  margin: -1
+view_layout:
+  place-self: center
+  show:
+    mediaquery: '(min-width: 800px)'

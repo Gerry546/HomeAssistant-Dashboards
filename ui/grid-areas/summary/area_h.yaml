@@ -1,0 +1,31 @@
+type: custom:state-switch
+entity: user
+default: default
+view_layout:
+  grid-area: h
+states:
+  default:
+    type: custom:layout-card
+    layout_type: custom:grid-layout
+  Tom:
+    type: custom:layout-card
+    layout_type: custom:grid-layout
+    layout:
+      grid-template-columns: auto min-content
+      grid-template-rows: auto
+      margin: '-1px -1px -1px -1px'
+      padding: 0
+    cards:
+      - !include ../../cards/welcome.yaml
+      - !include ../../cards/persons.yaml
+  Willeke:
+    type: custom:layout-card
+    layout_type: custom:grid-layout
+    layout:
+      grid-template-columns: auto min-content
+      grid-template-rows: auto
+      margin: '-1px -1px -1px -1px'
+      padding: 0
+    cards:
+      - !include ../../cards/welcome.yaml
+      - !include ../../cards/persons.yaml
