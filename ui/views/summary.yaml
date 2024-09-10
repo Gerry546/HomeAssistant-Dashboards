@@ -16,7 +16,7 @@ layout:
       grid-template-areas: |
         ". cc ."
         ". .  ."
-    '(min-width: 1704px)':
+    '(min-width: 2000px)':
       grid-template-columns: auto 1600px auto
       grid-template-areas: |
         ". cc ."
