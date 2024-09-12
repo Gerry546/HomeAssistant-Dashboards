@@ -8,4 +8,6 @@ cards:
   layout: !include ../../shared/snippets/layout-live-tile.yaml
   cards:
     - !include ../../cards/weather_header.yaml
+    - !include ../../cards/weather_temperature.yaml
+    - !include ../../cards/weather_precipation.yaml
     - !include ../../cards/weather_waqi.yaml

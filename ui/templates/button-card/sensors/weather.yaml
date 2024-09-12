@@ -23,3 +23,86 @@ weather_waqi:
               return "var(--ha-card-background)"
             }
           ]]]
+
+weather_current_temperature:
+  # icon: '[[[ return variables.weather_icon ]]]'
+  # name: '[[[ return variables.weather_condition ]]]'
+  # label: '[[[ return variables.weather_trend ]]]'
+  state_display: >-
+    [[[ return Math.round(entity.attributes.temperature) + "°"
+    ]]]
+  styles:
+    name:
+      - width: 50%
+    grid:
+      - background: var(--ha-card-background)
+    card:
+      - background: |
+          [[[
+            var temp = parseFloat(entity.attributes.temperature)
+            if (temp >= 25) {
+              return "rgba(var(--rgb-primary-color)," + ((temp - 25) / 7) + ")"
+            }
+            if (temp <= 20) {
+              return "rgba(var(--rgb-primary-color)," + ((20 - temp) / 14) + ")"
+            }
+            return "transparent"
+          ]]]
+
+weather_variables:
+  # triggers_update:
+  #   - sensor.valhalla_hourly_forecast_temperature_rising
+
+  variables:
+    weather_icon: |
+      [[[
+        var weatherIconDict = {
+          'partlycloudy': 'partly-cloudy',
+          'clear-night': 'night'
+        }
+        var weatherIcon = weatherIconDict[entity.state]
+        if (weatherIcon == null) {weatherIcon = entity.state}
+        return "mdi:weather-" + weatherIcon
+      ]]]
+
+    # weather_condition: |
+    #   [[[ 
+    #     var weatherNameDict = {
+    #       'partlycloudy': 'Partly Cloudy',
+    #       'clear-night': 'Clear Night',
+    #       'lightning-rainy': 'Lightning + Rainy'
+    #     }
+    #     var weatherName = weatherNameDict[entity.state]
+    #     if (weatherName == null) {weatherName = entity.state}
+    #     return weatherName
+    #   ]]]
+
+    # weather_trend: |
+    #   [[[
+    #     var tempForecast = entity.attributes.forecast.map((item) => { return item.temperature }).slice(0, 4)
+    #     if (states['sensor.valhalla_hourly_forecast_temperature_rising'].state == 'Rising') {
+    #       return '↗ ' + Math.max(...tempForecast) + '°'                      
+    #     } else {
+    #       return '↘ ' + Math.min(...tempForecast) + '°'
+    #     }
+    #   ]]]
+
+weather_precipitation:
+  variables:
+    day: |
+      [[[
+        var hour = new Date
+        hour = parseInt( hour.getHours() )
+        if (hour < 4) { return 1 }
+        if (hour < 21) { return 0 } else { return 1 }
+      ]]]
+  name: Precipitation
+  state_display: '[[[ return entity.attributes.forecast[variables.day].precipitation_probability + "%" ]]]'
+  icon: '[[[ return (entity.attributes.forecast[variables.day].precipitation_probability >= 33) ? "mdi:water" : "mdi:water-outline" ]]]'
+  label: '[[[ return entity.attributes.forecast[variables.day].precipitation ]]]'
+  show_units: false
+  styles:
+    grid:
+      - background: '[[[ return "rgba(var(--rgb-primary-color)," + (parseInt(entity.attributes.forecast[variables.day].precipitation_probability)/100) + ")" ]]]'
+    card:
+      - background: var(--ha-card-background)

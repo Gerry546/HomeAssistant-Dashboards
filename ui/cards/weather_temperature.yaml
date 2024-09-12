@@ -1,0 +1,6 @@
+type: 'custom:button-card'
+template:
+  - live_tile
+  - weather_variables
+  - weather_current_temperature
+entity: weather.buienradar
