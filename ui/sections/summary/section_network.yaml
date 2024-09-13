@@ -9,7 +9,7 @@ cards: &summary-column-network-maintenance-cards
     layout_type: 'custom:grid-layout'
     layout: !include ../../shared/snippets/layout-live-tile.yaml
     cards:
-      - !include ../../cards/network_header.yaml
-      # - !include ../../cards/network_ping.yaml
-      - !include ../../cards/network_download.yaml
-      - !include ../../cards/network_upload.yaml
+      - !include ../../cards/summary/network_header.yaml
+      # - !include ../../cards/summary/network_ping.yaml
+      - !include ../../cards/summary/network_download.yaml
+      - !include ../../cards/summary/network_upload.yaml

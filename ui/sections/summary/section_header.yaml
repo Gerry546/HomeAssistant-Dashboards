@@ -16,8 +16,8 @@ states:
       margin: '-1px -1px -1px -1px'
       padding: 0
     cards:
-      - !include ../../cards/welcome.yaml
-      - !include ../../cards/persons.yaml
+      - !include ../../cards/summary/welcome.yaml
+      - !include ../../cards/summary/persons.yaml
   Willeke:
     type: custom:layout-card
     layout_type: custom:grid-layout
@@ -27,5 +27,5 @@ states:
       margin: '-1px -1px -1px -1px'
       padding: 0
     cards:
-      - !include ../../cards/welcome.yaml
-      - !include ../../cards/persons.yaml
+      - !include ../../cards/summary/welcome.yaml
+      - !include ../../cards/summary/persons.yaml

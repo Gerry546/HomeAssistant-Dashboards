@@ -25,9 +25,8 @@ weather_waqi:
           ]]]
 
 weather_current_temperature:
-  # icon: '[[[ return variables.weather_icon ]]]'
-  # name: '[[[ return variables.weather_condition ]]]'
-  # label: '[[[ return variables.weather_trend ]]]'
+  name: '[[[ return entity.state ]]]'
+  # TODO: label: '[[[ return variables.weather_trend ]]]'
   state_display: >-
     [[[ return Math.round(entity.attributes.temperature) + "°"
     ]]]
@@ -49,43 +48,20 @@ weather_current_temperature:
             return "transparent"
           ]]]
 
-weather_variables:
-  # triggers_update:
-  #   - sensor.valhalla_hourly_forecast_temperature_rising
+# weather_variables:
+#   triggers_update:
+#     - sensor.valhalla_hourly_forecast_temperature_rising
 
-  variables:
-    weather_icon: |
-      [[[
-        var weatherIconDict = {
-          'partlycloudy': 'partly-cloudy',
-          'clear-night': 'night'
-        }
-        var weatherIcon = weatherIconDict[entity.state]
-        if (weatherIcon == null) {weatherIcon = entity.state}
-        return "mdi:weather-" + weatherIcon
-      ]]]
-
-    # weather_condition: |
-    #   [[[ 
-    #     var weatherNameDict = {
-    #       'partlycloudy': 'Partly Cloudy',
-    #       'clear-night': 'Clear Night',
-    #       'lightning-rainy': 'Lightning + Rainy'
-    #     }
-    #     var weatherName = weatherNameDict[entity.state]
-    #     if (weatherName == null) {weatherName = entity.state}
-    #     return weatherName
-    #   ]]]
-
-    # weather_trend: |
-    #   [[[
-    #     var tempForecast = entity.attributes.forecast.map((item) => { return item.temperature }).slice(0, 4)
-    #     if (states['sensor.valhalla_hourly_forecast_temperature_rising'].state == 'Rising') {
-    #       return '↗ ' + Math.max(...tempForecast) + '°'                      
-    #     } else {
-    #       return '↘ ' + Math.min(...tempForecast) + '°'
-    #     }
-    #   ]]]
+#   variables:
+#     weather_trend: |
+#       [[[
+#         var tempForecast = entity.attributes.forecast.map((item) => { return item.temperature }).slice(0, 4)
+#         if (states['sensor.valhalla_hourly_forecast_temperature_rising'].state == 'Rising') {
+#           return '↗ ' + Math.max(...tempForecast) + '°'                      
+#         } else {
+#           return '↘ ' + Math.min(...tempForecast) + '°'
+#         }
+#       ]]]
 
 weather_precipitation:
   variables:

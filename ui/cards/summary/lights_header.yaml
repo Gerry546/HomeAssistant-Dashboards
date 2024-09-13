@@ -1,0 +1,8 @@
+type: 'custom:button-card'
+template: header_card
+variables:
+  name: LIGHTS
+  label: All Lights
+  link: /ui-dashboard/lights
+view_layout:
+  grid-column: 1/-1

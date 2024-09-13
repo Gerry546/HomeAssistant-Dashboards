@@ -7,7 +7,7 @@ cards:
   layout_type: 'custom:grid-layout'
   layout: !include ../../shared/snippets/layout-live-tile.yaml
   cards:
-    - !include ../../cards/weather_header.yaml
-    - !include ../../cards/weather_temperature.yaml
-    - !include ../../cards/weather_precipation.yaml
-    - !include ../../cards/weather_waqi.yaml
+    - !include ../../cards/summary/weather_header.yaml
+    - !include ../../cards/summary/weather_temperature.yaml
+    - !include ../../cards/summary/weather_precipation.yaml
+    - !include ../../cards/summary/weather_waqi.yaml

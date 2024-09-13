@@ -6,5 +6,5 @@ layout:
   card_margin: 1px
   padding: 0
 cards:
-  - !include ../../cards/energy_header.yaml
-  - !include ../../cards/total_energy_graph.yaml
+  - !include ../../cards/summary/energy_header.yaml
+  - !include ../../cards/summary/total_energy_graph.yaml
