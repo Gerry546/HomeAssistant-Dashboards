@@ -1,0 +1,7 @@
+type: 'custom:layout-card'
+layout_type: 'custom:grid-layout'
+layout: !include ../../shared/snippets/layout-page-title-with-2-badges.yaml
+view_layout:
+  grid-column: 1/-1
+cards: 
+  - !include ../../cards/lights/welcome.yaml

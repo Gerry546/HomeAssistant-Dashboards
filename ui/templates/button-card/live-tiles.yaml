@@ -348,7 +348,6 @@ live_tile:
 
 # Light Group Button Card
 
-# TODO: for some reason it is not picking up light.cupboard
 light_button_card_group:
   template: live_tile_card
   group_expand: true

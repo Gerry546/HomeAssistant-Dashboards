@@ -1,0 +1,58 @@
+- view_layout:
+    grid-column: span 2
+  type: 'custom:button-card'
+  template:
+    - light_button_card_group
+  entity: light.living_room
+  name: All Main Lights
+  icon: 'mdi:ceiling-light-multiple'
+  variables:
+    aspect_ratio: 2/1
+
+- type: 'custom:decluttering-card'
+  template: light_card
+  variables:
+    - entity: light.pc_corner
+    - name: TV Corner
+
+- type: 'custom:decluttering-card'
+  template: light_card
+  variables:
+    - entity: light.cupboard
+    - name: Cupboard
+
+- type: 'custom:decluttering-card'
+  template: light_card
+  variables:
+    - entity: light.dinner_table
+    - name: Play Corner
+
+- type: 'custom:decluttering-card'
+  template: light_card
+  variables:
+    - entity: light.pc_corner_2
+    - name: PC Corner
+
+- type: 'custom:decluttering-card'
+  template: light_card
+  variables:
+    - entity: light.reading_corner
+    - name: Dinner Corner
+
+- type: 'custom:decluttering-card'
+  template: light_card
+  variables:
+    - entity: light.kitchen
+    - name: Kitchen
+
+- type: 'custom:decluttering-card'
+  template: light_card
+  variables:
+    - entity: light.hallway_light_0
+    - name: Hallway
+
+- type: 'custom:decluttering-card'
+  template: light_card
+  variables:
+    - entity: light.toilet_downstairs
+    - name: Toilet
