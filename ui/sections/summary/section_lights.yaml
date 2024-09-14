@@ -1,10 +1,12 @@
 type: 'custom:layout-card'
 layout_type: 'custom:grid-layout'
-layout:
-  grid-template-columns: >-
-    repeat(auto-fill, [col-start] minmax(112px, 1fr)
-    [col-end])
-  margin: 0
-  card_margin: 1px
+# layout:
+#   grid-template-columns: >-
+#     repeat(auto-fill, [col-start] minmax(112px, 1fr)
+#     [col-end])
+#   margin: 0
+#   card_margin: 1px
+layout: !include ../../shared/snippets/layout-live-tile.yaml
 cards: &summary-column-lights-cards
   - !include ../../cards/summary/lights_header.yaml
+  - !include ../../cards/summary/lights_all.yaml

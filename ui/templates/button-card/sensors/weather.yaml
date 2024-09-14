@@ -64,21 +64,13 @@ weather_current_temperature:
 #       ]]]
 
 weather_precipitation:
-  variables:
-    day: |
-      [[[
-        var hour = new Date
-        hour = parseInt( hour.getHours() )
-        if (hour < 4) { return 1 }
-        if (hour < 21) { return 0 } else { return 1 }
-      ]]]
   name: Precipitation
-  state_display: '[[[ return entity.attributes.forecast[variables.day].precipitation_probability + "%" ]]]'
-  icon: '[[[ return (entity.attributes.forecast[variables.day].precipitation_probability >= 33) ? "mdi:water" : "mdi:water-outline" ]]]'
-  label: '[[[ return entity.attributes.forecast[variables.day].precipitation ]]]'
+  state_display: '[[[ return entity.state + "%" ]]]'
+  icon: '[[[ return (entity.state >= 33.0) ? "mdi:water" : "mdi:water-outline" ]]]'
+  #TODO label: '[[[ return sensor.rain_1d ]]]'
   show_units: false
   styles:
     grid:
-      - background: '[[[ return "rgba(var(--rgb-primary-color)," + (parseInt(entity.attributes.forecast[variables.day].precipitation_probability)/100) + ")" ]]]'
+      - background: '[[[ return "rgba(var(--rgb-primary-color)," + (parseInt(entity.state)/100) + ")" ]]]'
     card:
       - background: var(--ha-card-background)

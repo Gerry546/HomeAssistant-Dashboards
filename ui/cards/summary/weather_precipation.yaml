@@ -1,5 +1,5 @@
 type: 'custom:button-card'
 template:
   - live_tile
-  # - weather_precipitation
-entity: sensor.precipitation_forecast_average
+  - weather_precipitation
+entity: sensor.rainchance_1d
