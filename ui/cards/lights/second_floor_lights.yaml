@@ -1,0 +1,28 @@
+- view_layout:
+    grid-column: span 2
+  type: 'custom:button-card'
+  template:
+    - light_button_card_group
+  entity: light.second_floor_lights
+  name: All Second Floor Lights
+  icon: 'mdi:ceiling-light-multiple'
+  variables:
+    aspect_ratio: 2/1
+
+- type: 'custom:decluttering-card'
+  template: light_card
+  variables:
+    - entity: light.home_office
+    - name: Home Office
+
+- type: 'custom:decluttering-card'
+  template: light_card
+  variables:
+    - entity: light.light
+    - name: Hobby Room
+
+- type: 'custom:decluttering-card'
+  template: light_card
+  variables:
+    - entity: light.small_lamp
+    - name: Small Lamp

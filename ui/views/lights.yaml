@@ -11,6 +11,9 @@ cards:
       grid-area: cc
     cards:
       - !include ../sections/lights/section_header.yaml
-      - !include ../sections/lights/section_living_room.yaml
+      - !include ../sections/lights/section_ground_floor.yaml
       - !include ../sections/lights/section_accent_lights.yaml
+      - !include ../sections/lights/section_first_floor.yaml
+      - !include ../sections/lights/section_second_floor.yaml
+      - !include ../sections/lights/section_outside.yaml
   

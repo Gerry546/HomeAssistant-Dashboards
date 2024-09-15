@@ -3,8 +3,8 @@
   type: 'custom:button-card'
   template:
     - light_button_card_group
-  entity: light.living_room
-  name: All Main Lights
+  entity: light.first_floor_lights
+  name: All First Floor Lights
   icon: 'mdi:ceiling-light-multiple'
   variables:
     aspect_ratio: 2/1
@@ -12,41 +12,41 @@
 - type: 'custom:decluttering-card'
   template: light_card
   variables:
-    - entity: light.pc_corner
-    - name: TV Corner
+    - entity: light.bathroom_light
+    - name: Bathroom
 
 - type: 'custom:decluttering-card'
   template: light_card
   variables:
-    - entity: light.dinner_table
-    - name: Play Corner
-
-- type: 'custom:decluttering-card'
-  template: light_card
-  variables:
-    - entity: light.pc_corner_2
-    - name: PC Corner
-
-- type: 'custom:decluttering-card'
-  template: light_card
-  variables:
-    - entity: light.reading_corner
-    - name: Dinner Corner
-
-- type: 'custom:decluttering-card'
-  template: light_card
-  variables:
-    - entity: light.kitchen
-    - name: Kitchen
-
-- type: 'custom:decluttering-card'
-  template: light_card
-  variables:
-    - entity: light.hallway_light_0
-    - name: Hallway
-
-- type: 'custom:decluttering-card'
-  template: light_card
-  variables:
-    - entity: light.toilet_downstairs
+    - entity: light.toilet_first_floor
     - name: Toilet
+
+- type: 'custom:decluttering-card'
+  template: light_card
+  variables:
+    - entity: light.master_bedroom_0
+    - name: Master Bedroom
+
+- type: 'custom:decluttering-card'
+  template: light_card
+  variables:
+    - entity: light.bed_side_lamp_tom
+    - name: Bed Side Lamp Tom
+
+- type: 'custom:decluttering-card'
+  template: light_card
+  variables:
+    - entity: light.bed_side_lamp_1
+    - name: Bed Side Lamp Willeke
+
+- type: 'custom:decluttering-card'
+  template: light_card
+  variables:
+    - entity: light.bedroom_light
+    - name: Bedroom
+
+- type: 'custom:decluttering-card'
+  template: light_card
+  variables:
+    - entity: light.hallway_first_floor
+    - name: Hallway

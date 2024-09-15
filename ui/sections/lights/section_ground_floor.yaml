@@ -1,0 +1,10 @@
+type: 'custom:layout-card'
+layout_type: 'custom:grid-layout'
+layout:
+  margin: -1        
+cards:
+  - !include ../../cards/lights/ground_floor_header.yaml
+  - type: 'custom:layout-card'
+    layout_type: 'custom:grid-layout'
+    layout: !include ../../shared/snippets/layout-live-tile.yaml
+    cards: !include ../../cards/lights/ground_floor_lights.yaml
