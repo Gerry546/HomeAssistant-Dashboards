@@ -1,8 +1,0 @@
-type: 'custom:button-card'
-template: header_card
-variables:
-  name: WEATHER
-  label: More
-  link: /ui-dashboard/weather
-view_layout:
-  grid-column: 1/-1

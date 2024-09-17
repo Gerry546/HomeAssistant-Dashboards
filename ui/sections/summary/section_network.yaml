@@ -7,9 +7,56 @@ layout:
 cards: &summary-column-network-maintenance-cards
   - type: 'custom:layout-card'
     layout_type: 'custom:grid-layout'
-    layout: !include ../../shared/snippets/layout-live-tile.yaml
+    layout: !include ../../layouts/layout-live-tile.yaml
     cards:
-      - !include ../../cards/summary/network_header.yaml
-      # - !include ../../cards/summary/network_ping.yaml
-      - !include ../../cards/summary/network_download.yaml
-      - !include ../../cards/summary/network_upload.yaml
+      - type: 'custom:button-card'
+        template: header_card
+        view_layout:
+          grid-column: 1/-1
+        variables:
+          name: NETWORK
+          label: More
+          link: /ui-dashboard/network
+      # - type: 'custom:button-card'
+      #   template:
+      #     - live_tile_card
+      #     - live_tile_with_long_state
+      #     - live_tile_with_state_countdown
+      #   entity: binary_sensor.estalor_com
+      #   name: WAN
+      #   state:
+      #     - value: 'off'
+      #       styles:
+      #         card:
+      #           - background: var(--primary-color)
+      #     - value: 'on'
+      #       styles:
+      #         card:
+      #           - background: var(--ha-card-background)
+      #           - color: var(--primary-text-color)
+      #   variables:
+      #     aspect_ratio: '[[[ return Math.round(this.offsetWidth / 112) ]]]'
+      #   view_layout:
+      #     grid-column: 1/-2
+      - type: 'custom:button-card'
+        template:
+          - live_tile_with_graph
+          - live_tile_with_state_unit
+          - live_tile_with_graph_threshold
+        variables:
+          line_color_lower_bound: 60
+          line_color_upper_bound: 500
+          line_color_upper_bound_max: 1000
+        entity: sensor.speedtest_download
+        name: Download
+      - type: 'custom:button-card'
+        template:
+          - live_tile_with_graph
+          - live_tile_with_state_unit
+          - live_tile_with_graph_threshold
+        variables:
+          line_color_lower_bound: 30
+          line_color_upper_bound: 500
+          line_color_upper_bound_max: 1000
+        entity: sensor.speedtest_upload
+        name: Upload

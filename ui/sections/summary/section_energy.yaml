@@ -6,5 +6,41 @@ layout:
   card_margin: 1px
   padding: 0
 cards:
-  - !include ../../cards/summary/energy_header.yaml
-  - !include ../../cards/summary/total_energy_graph.yaml
+  - type: custom:state-switch
+    entity: user
+    default: default
+    view_layout:
+      grid-column: 1/-1
+    states:
+      default: &summary-energy-header
+        type: custom:button-card
+        template: header_card
+        variables:
+          name: ENERGY
+          label: More
+          link: /ui-dashboard/energy
+      Tom:
+        <<: *summary-energy-header
+        styles:
+          card:
+            - margin-top: '-20px'
+  - type: custom:button-card
+    template: 
+      - live_tile_with_graph
+      - live_tile_with_state_unit
+      - live_tile_with_graph_threshold
+    variables:
+      aspect_ratio: 2/1
+      state_display: '[[[ return entity.state ]]]'
+      points_per_hour: 4
+      hours_to_show: 24
+      graph_height: 96
+      line_width: 2
+      line_color_lower_bound: 0
+      line_color_upper_bound: 1
+      line_color_upper_bound_max: 4
+    entity: sensor.electricity_meter_power_consumption
+    name: Total Energy Usage
+    icon: 'mdi:home-lightning-bolt'
+    view_layout:
+      grid-column: span 4
