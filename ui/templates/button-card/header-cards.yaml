@@ -1,25 +1,29 @@
-# Header Card
-
-header_card:
+header_card_base:
   variables:
     name: ''
+    subheader: false
+  show_state: false
+  show_label: false
+  styles:
+    card:
+      - background: none
+
+header_card:
+  template: header_card_base
+  variables:
     label: ''
     arrow: mdi:arrow-right
     action: navigate
     link: ''
     service: ''
     service_data: ''
-    subheader: false
   show_name: false
-  show_state: false
-  show_label: false
   styles:
     grid:
       - grid-template-columns: auto min-content 16px
       - grid-template-rows: '[[[ return variables.subheader ? "10px auto 8px" : "26px auto 8px" ]]]'
       - grid-template-areas: "'header .' 'header link' 'header .'"
     card:
-      - background: none
       - padding: 0
   custom_fields:
     header:
@@ -47,7 +51,6 @@ header_card:
             - grid-template-columns: min-content min-content
             - grid-template-areas: '"n i"'
           card:
-            - background: none
             - padding: 0
           img_cell:
             - width: 16px
@@ -63,18 +66,9 @@ header_card:
             - padding: 4px 8px 6px
             - font-size: var(--subtitle-font-size)
 
-# Header Card (with no links)
-# Header text is 'name'.
-
 header_card_no_link:
-  variables:
-    name: ''
-    subheader: false
-
+  template: header_card_base
   name: '[[[ return variables.name ]]]'
-  show_state: false
-  show_label: false
-
   tap_action:
     action: none
 
@@ -84,7 +78,6 @@ header_card_no_link:
       - grid-template-areas: '"n"'
     card:
       - padding: '[[[ return variables.subheader ? "16px 16px 16px 16px" : "32px 16px 16px 16px" ]]]'
-      - background: none
       - cursor: default
     name:
       - text-align: left

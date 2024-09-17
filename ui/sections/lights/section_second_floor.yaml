@@ -3,8 +3,36 @@ layout_type: 'custom:grid-layout'
 layout:
   margin: -1        
 cards:
-  - !include ../../cards/lights/second_floor_header.yaml
+  - type: 'custom:button-card'
+    template: header_card_no_link
+    variables:
+      name: SECOND FLOOR
   - type: 'custom:layout-card'
     layout_type: 'custom:grid-layout'
-    layout: !include ../../shared/snippets/layout-live-tile.yaml
-    cards: !include ../../cards/lights/second_floor_lights.yaml
+    layout: !include ../../layouts/layout-live-tile.yaml
+    cards: 
+      - view_layout:
+          grid-column: span 2
+        type: 'custom:button-card'
+        template:
+          - light_button_card_group
+        entity: light.second_floor_lights
+        name: All Second Floor Lights
+        icon: 'mdi:ceiling-light-multiple'
+        variables:
+          aspect_ratio: 2/1
+      - type: 'custom:decluttering-card'
+        template: light_card
+        variables:
+          - entity: light.home_office
+          - name: Home Office
+      - type: 'custom:decluttering-card'
+        template: light_card
+        variables:
+          - entity: light.light
+          - name: Hobby Room
+      - type: 'custom:decluttering-card'
+        template: light_card
+        variables:
+          - entity: light.small_lamp
+          - name: Small Lamp

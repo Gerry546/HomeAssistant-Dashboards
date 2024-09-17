@@ -1,12 +1,12 @@
 title: Light
 path: lights
 type: 'custom:grid-layout'
-layout: !include ../shared/snippets/layout-page-margin.yaml
+layout: !include ../layouts/layout-page-margin.yaml
 
 cards:
   - type: custom:layout-card
     layout_type: custom:grid-layout
-    layout: !include ../shared/snippets/layout-page-columns.yaml
+    layout: !include ../layouts/layout-page-columns.yaml
     view_layout:
       grid-area: cc
     cards:
