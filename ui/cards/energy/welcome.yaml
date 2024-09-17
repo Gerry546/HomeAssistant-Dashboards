@@ -1,6 +1,0 @@
-type: markdown
-card_mod:
-  style: !include ../../shared/snippets/style-markdown-page-title.yaml
-content: >
-  # Energy
-
