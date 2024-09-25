@@ -1,0 +1,13 @@
+title: Network
+path: network
+type: custom:grid-layout
+layout: !include ../layouts/layout-page-margin.yaml
+
+cards:
+  - type: custom:layout-card
+    layout_type: custom:grid-layout
+    view_layout:
+      grid-area: cc
+    layout: !include ../layouts/layout-page-columns.yaml
+    cards:
+      - !include ../sections/network/section_header.yaml
