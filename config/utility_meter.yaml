@@ -1,0 +1,43 @@
+daily_energy_tarif_1_rounded:
+  name: Daily Energy Consumption (Offpeak)
+  source: sensor.electricity_meter_energy_consumption_tarif_1
+  cycle: daily
+
+daily_energy_tarif_2_rounded:
+  name: Daily Energy Consumption (Peak)
+  source: sensor.electricity_meter_energy_consumption_tarif_2
+  cycle: daily
+
+daily_energy_production_1_rounded:
+  name: Daily Energy Production (Offpeak)
+  source: sensor.electricity_meter_energy_production_tarif_1
+  cycle: daily
+
+daily_energy_production_2_rounded:
+  name: Daily Energy Production (Peak)
+  source: sensor.electricity_meter_energy_production_tarif_2
+  cycle: daily
+
+daily_gas:
+  source: sensor.gas_consumption
+  name: Daily Gas
+  cycle: daily
+
+monthly_energy_tarif_1_rounded:
+  source: sensor.electricity_meter_energy_consumption_tarif_1
+  name: Monthly Energy (Offpeak)
+  cycle: monthly
+
+monthly_energy_tarif_2_rounded:
+  source: sensor.electricity_meter_energy_consumption_tarif_2
+  name: Monthly Energy (Peak)
+  cycle: monthly
+
+monthly_gas:
+  source: sensor.gas_consumption
+  name: Monthly Gas
+  cycle: monthly
+
+daily_shellyplusrgbwpm_b0a7324114a8_energy:
+  source: sensor.shellyplusrgbwpm_b0a7324114a8_energy
+  cycle: daily

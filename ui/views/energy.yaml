@@ -11,3 +11,4 @@ cards:
     layout: !include ../layouts/layout-page-columns.yaml
     cards:
       - !include ../sections/energy/section_header.yaml
+      - !include ../sections/energy/section_summary.yaml

@@ -1,0 +1,75 @@
+type: 'custom:layout-card'
+layout_type: 'custom:grid-layout'
+layout:
+  margin: 0
+  grid-template-columns: 'repeat(auto-fill, [col-start] minmax(360px, 1fr) [col-end])'
+view_layout:
+  grid-column-start: 1
+  grid-column-end: -1
+cards:
+  - type: 'custom:sankey-chart'
+    show_names: true
+    height: 250
+    min_box_height: 2
+    view_layout:
+      grid-column: 1/-1
+    card_mod:
+      style: >
+        ha-card { background: none; }
+
+        .connectors { left: 8px !important; right: 4px !important; }
+
+        .box div:first-child { width: 4px !important; }
+
+        .box .label { padding-left: 8px !important; font-weight:
+        500;}
+
+        .box .label span { font-weight: normal; font-style: normal
+        !important; }
+        .box .label span.state { font-weight: 600; }
+        .box .label span.name { font-size: inherit; }
+        .section:last-child { flex-grow: .667 !important; flex-shrink: 2 !important; }
+    sections:
+      - entities:
+        - entity_id: sensor.solar_panels_details_energy_today_input_1
+          name: Solar Panels
+          color: var(--success-color)
+          add_entities:
+            - sensor.solar_panels_details_energy_today_input_2
+          subtract_entities:
+            - sensor.daily_energy_production_offpeak
+            - sensor.daily_energy_production_peak
+          children:
+            - total
+        - entity_id: sensor.daily_energy_consumption_offpeak
+          name: Grid
+          color: var(--warning-color)
+          add_entities:
+            - sensor.daily_energy_consumption_peak
+          subtract_entities:
+            - sensor.daily_energy_production_offpeak
+            - sensor.daily_energy_production_peak
+          children:
+            - total
+      - entities:
+        - entity_id: total
+          type: remaining_parent_state
+          name: Total Consumption
+          children:
+            - sensor.all_lights_total_energy
+            - sensor.all_media_total_energy
+            - sensor.all_climate_total_energy
+            - other
+      - entities:
+        - entity_id: other
+          name: Unaccounted
+          type: remaining_parent_state
+        - entity_id: sensor.all_lights_total_energy
+          name: Lights
+          color: yellow
+        - entity_id: sensor.all_media_total_energy
+          name: Media
+          color: cyan
+        - entity_id: sensor.all_climate_total_energy
+          name: Climate
+          color: green
