@@ -41,3 +41,11 @@ monthly_gas:
 daily_shellyplusrgbwpm_b0a7324114a8_energy:
   source: sensor.shellyplusrgbwpm_b0a7324114a8_energy
   cycle: daily
+
+home_office_shutter_energy_daily:
+  source: sensor.home_office_shutter_energy
+  cycle: daily
+
+hobby_room_shutter_energy_daily:
+  source: sensor.hobby_room_shutter_energy
+  cycle: daily

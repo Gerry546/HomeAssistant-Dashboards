@@ -4,23 +4,23 @@
     device_class: energy
     state_class: measurement        
     state: "{{ 
-        states('sensor.kitchen_energy') | float(0) 
+        states('sensor.kitchen_energy_daily') | float(0) 
       + states('sensor.daily_shellyplusrgbwpm_b0a7324114a8_energy') | float(0)
-      + states('sensor.tv_corner_energy') | float(0)
-      + states('sensor.toilet_first_floor_1_energy') | float(0)
-      + states('sensor.toilet_first_floor_2_energy') | float(0)
-      + states('sensor.toilet_downstairs_energy') | float(0)
-      + states('sensor.play_corner_energy') | float(0)
-      + states('sensor.pccorner1_energy') | float(0)
-      + states('sensor.pccorner2_energy') | float(0)
-      + states('sensor.pccorner3_energy') | float(0)
-      + states('sensor.master_bedroom_energy') | float(0)
-      + states('sensor.kitchen_energy') | float(0)
-      + states('sensor.home_office_energy') | float(0)
-      + states('sensor.hobby_room_energy') | float(0)
-      + states('sensor.dinner_corner_energy') | float(0)
-      + states('sensor.bed_side_lamp_tom_energy') | float(0)
-      + states('sensor.bed_side_lamp_1_energy') | float(0)
+      + states('sensor.tv_corner_energy_daily') | float(0)
+      + states('sensor.toilet_first_floor_1_energy_daily') | float(0)
+      + states('sensor.toilet_first_floor_2_energy_daily') | float(0)
+      + states('sensor.toilet_downstairs_energy_daily') | float(0)
+      + states('sensor.play_corner_energy_daily') | float(0)
+      + states('sensor.pccorner1_energy_daily') | float(0)
+      + states('sensor.pccorner2_energy_daily') | float(0)
+      + states('sensor.pccorner3_energy_daily') | float(0)
+      + states('sensor.master_bedroom_energy_daily') | float(0)
+      + states('sensor.kitchen_energy_daily') | float(0)
+      + states('sensor.home_office_energy_daily') | float(0)
+      + states('sensor.hobby_room_energy_daily') | float(0)
+      + states('sensor.dinner_corner_energy_daily') | float(0)
+      + states('sensor.bed_side_lamp_tom_energy_daily') | float(0)
+      + states('sensor.bed_side_lamp_1_energy_daily') | float(0)
       }}"
 
 - sensor:
@@ -39,6 +39,6 @@
     device_class: energy
     state_class: measurement        
     state: "{{ 
-        states('sensor.home_office_shutter_energy') | float(0)
-      + states('sensor.hobby_room_shutter_energy') | float(0)
+        states('sensor.home_office_shutter_energy_daily') | float(0)
+      + states('sensor.hobby_room_shutter_energy_daily') | float(0)
       }}"
