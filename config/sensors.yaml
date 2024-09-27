@@ -1,0 +1,15 @@
+- platform: statistics
+  name: "Total Energy Use (Hourly Max)"
+  entity_id: sensor.total_energy_use_hourly
+  state_characteristic: value_max
+  max_age:
+    hours: 1
+  sampling_size: 360
+
+- platform: statistics
+  name: "Total Energy Use (Daily Max)"
+  entity_id: sensor.total_energy_use_daily
+  state_characteristic: value_max
+  max_age:
+    hours: 168
+  sampling_size: 1008

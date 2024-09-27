@@ -39,7 +39,7 @@ cards:
       line_color_lower_bound: 0
       line_color_upper_bound: 1
       line_color_upper_bound_max: 4
-    entity: sensor.electricity_meter_power_consumption
+    entity: sensor.total_energy_use
     name: Total Energy Usage
     icon: 'mdi:home-lightning-bolt'
     view_layout:

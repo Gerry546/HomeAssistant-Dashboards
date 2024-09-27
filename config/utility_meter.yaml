@@ -49,3 +49,7 @@ home_office_shutter_energy_daily:
 hobby_room_shutter_energy_daily:
   source: sensor.hobby_room_shutter_energy
   cycle: daily
+
+total_energy_use_hourly:
+  source: sensor.total_energy_use_daily
+  cycle: hourly

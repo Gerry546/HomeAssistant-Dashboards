@@ -29,8 +29,8 @@
     device_class: energy
     state_class: measurement        
     state: "{{ 
-        states('sensor.study_speaker_energy') | float(0)
-      + states('sensor.living_room_speaker_energy') | float(0)
+        states('sensor.study_speaker_energy_daily') | float(0)
+      + states('sensor.living_room_speaker_energy_daily') | float(0)
       }}"
 
 - sensor:
@@ -41,4 +41,26 @@
     state: "{{ 
         states('sensor.home_office_shutter_energy_daily') | float(0)
       + states('sensor.hobby_room_shutter_energy_daily') | float(0)
+      }}"
+
+- sensor:
+  - name: Total Energy Use
+    unit_of_measurement: "kWh"
+    device_class: energy
+    state_class: measurement        
+    state: "{{ 
+        states('sensor.electricity_meter_power_consumption') | float(0)
+      - states('sensor.electricity_meter_power_production') | float(0)
+      }}"
+
+- sensor:
+  - name: Total Energy Use (Daily)
+    unit_of_measurement: "kWh"
+    device_class: energy
+    state_class: measurement        
+    state: "{{ 
+        states('sensor.daily_energy_consumption_offpeak') | float(0)
+      - states('sensor.daily_energy_production_offpeak') | float(0)
+      + states('sensor.daily_energy_consumption_peak') | float(0)
+      - states('sensor.daily_energy_production_peak') | float(0)
       }}"
