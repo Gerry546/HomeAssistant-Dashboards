@@ -39,17 +39,21 @@ monthly_gas:
   cycle: monthly
 
 daily_shellyplusrgbwpm_b0a7324114a8_energy:
+  name: Cupboard Light Energy (Daily)
   source: sensor.shellyplusrgbwpm_b0a7324114a8_energy
   cycle: daily
 
 home_office_shutter_energy_daily:
+  name: Home Office Shutter Energy (Daily)
   source: sensor.home_office_shutter_energy
   cycle: daily
 
 hobby_room_shutter_energy_daily:
+  name: Hobby Room Shutter Energy (Daily)
   source: sensor.hobby_room_shutter_energy
   cycle: daily
 
 total_energy_use_hourly:
+  name: Total Energy Use (Daily)
   source: sensor.total_energy_use_daily
   cycle: hourly
