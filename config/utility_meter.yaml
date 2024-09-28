@@ -54,6 +54,6 @@ hobby_room_shutter_energy_daily:
   cycle: daily
 
 total_energy_use_hourly:
-  name: Total Energy Use (Daily)
+  name: Total Energy Use (Hourly)
   source: sensor.total_energy_use_daily
   cycle: hourly

@@ -32,7 +32,6 @@ cards:
           show:
             mediaquery: '(min-width: 1128px), (max-width:799.99px)'
         cards:
-          - !include ../sections/summary/section_network.yaml
           - !include ../sections/summary/section_lights.yaml
       - type: 'custom:layout-card'
         layout_type: 'custom:grid-layout'
@@ -45,7 +44,7 @@ cards:
           show:
             mediaquery: '(min-width: 1440px)'
         cards:
-          []
+          - !include ../sections/summary/section_network.yaml
       - type: 'custom:layout-card'
         layout_type: 'custom:grid-layout'
         layout:
