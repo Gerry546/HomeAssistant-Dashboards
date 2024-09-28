@@ -19,7 +19,7 @@ daily_energy_production_2_rounded:
   cycle: daily
 
 daily_gas:
-  source: sensor.gas_consumption
+  source: sensor.gas_meter_gas_consumption
   name: Daily Gas
   cycle: daily
 
@@ -34,7 +34,7 @@ monthly_energy_tarif_2_rounded:
   cycle: monthly
 
 monthly_gas:
-  source: sensor.gas_consumption
+  source: sensor.gas_meter_gas_consumption
   name: Monthly Gas
   cycle: monthly
 
