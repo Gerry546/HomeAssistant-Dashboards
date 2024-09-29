@@ -9,7 +9,7 @@ cards:
       # Network
 
       The Internet is {{ states('binary_sensor.estalor_com') }}
-      and {{ states('sensor.asuswrt_devices_connected') }} devices
+      and {{ state_attr('group.total_number_of_devices_connected','entity_id') |count }} devices
       are connected.{%- if states('sensor.speedtest_download') !=
       'unavailable' -%}{{ ' ' }}The speed is {{ iif(
       states('sensor.speedtest_download')|int >= 100, 'normal',
