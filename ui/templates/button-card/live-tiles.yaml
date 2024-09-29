@@ -383,3 +383,28 @@ light_button_card_group:
             }
           ]]]
       - color: var(--primary-text-color)
+
+# Live Tile with Unit
+
+live_tile_with_unit:
+  template:
+    - live_tile
+  custom_fields:
+    unit: '[[[ return entity.attributes.unit_of_measurement ]]]'
+  styles:
+    grid:
+      - grid-template-areas: '". i s ." ". i unit ." "n n l l"'
+      - grid-template-rows: auto auto 16px 0
+    state:
+      - align-self: end
+      - padding: 4px 0 0 8px
+    custom_fields:
+      unit:
+        - font-size: var(--h6-font-size)
+        - font-weight: var(--h6-font-weight)
+        - text-transform: uppercase
+        - place-self: start start
+        - padding: 0 0 0 8px
+        - margin-top: -4px
+        - color: var(--primary-text-color)
+        - opacity: .6

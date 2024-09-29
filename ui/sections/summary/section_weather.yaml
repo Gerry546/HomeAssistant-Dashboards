@@ -36,3 +36,9 @@ cards:
       view_layout:
         show:
           mediaquery: '(min-width: 1128px), (max-width: 799.99px)'
+    
+    - type: 'custom:button-card'
+      template:
+        - live_tile_with_unit
+        - weather_wind
+      entity: sensor.wind_speed

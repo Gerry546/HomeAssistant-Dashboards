@@ -23,7 +23,6 @@
       + states('sensor.bed_side_lamp_1_energy_daily') | float(0)
       }}"
 
-- sensor:
   - name: All Media Total Energy
     unit_of_measurement: "kWh"
     device_class: energy
@@ -33,7 +32,6 @@
       + states('sensor.living_room_speaker_energy_daily') | float(0)
       }}"
 
-- sensor:
   - name: All Climate Total Energy
     unit_of_measurement: "kWh"
     device_class: energy
@@ -43,7 +41,6 @@
       + states('sensor.hobby_room_shutter_energy_daily') | float(0)
       }}"
 
-- sensor:
   - name: Total Energy Use
     unit_of_measurement: "kWh"
     device_class: energy
@@ -53,7 +50,6 @@
       - states('sensor.electricity_meter_power_production') | float(0)
       }}"
 
-- sensor:
   - name: Total Energy Use (Daily)
     unit_of_measurement: "kWh"
     device_class: energy
@@ -64,3 +60,21 @@
       + states('sensor.daily_energy_consumption_peak') | float(0)
       - states('sensor.daily_energy_production_peak') | float(0)
       }}"
+
+  - name: Wind Force Text
+    state: >
+      {% set wind_force_text = states('sensor.wind_force') | float %}
+      {% if wind_force_text | float<=1 %}Calm
+      {% elif wind_force_text | float<=2 | float>1 %}Light Air
+      {% elif wind_force_text | float<=3 | float>2 %}Light Breeze
+      {% elif wind_force_text | float<=4 | float>3 %}Gentle Breeze
+      {% elif wind_force_text | float<=5 | float>4 %}Moderate Breeze
+      {% elif wind_force_text | float<=6 | float>5 %}Fresh Breeze
+      {% elif wind_force_text | float<=7 | float>6 %}Strong Breeze
+      {% elif wind_force_text | float<=8 | float>7 %}Near Gale
+      {% elif wind_force_text | float<=9 | float>8 %}Gale
+      {% elif wind_force_text | float<=10 | float>9 %}Strong Gale
+      {% elif wind_force_text | float<=11 | float>10 %}Whole Gale
+      {% elif wind_force_text | float<=12 | float>11 %}Storm Force
+      {% elif wind_force_text | float<=13 | float>12 %}Hurricane Force
+      {%- endif %}

@@ -74,3 +74,27 @@ weather_precipitation:
       - background: '[[[ return "rgba(var(--rgb-primary-color)," + (parseInt(entity.state)/100) + ")" ]]]'
     card:
       - background: var(--ha-card-background)
+
+weather_wind:
+  name: '[[[ return states["sensor.wind_force_text"].state ]]]'
+  icon: 'mdi:navigation'
+  label: '[[[ return states["sensor.wind_direction"].state ]]]'
+  state_display: '[[[ return Math.round(states["sensor.wind_speed"].state * 10) / 10 ]]]'
+  custom_fields:
+    unit: KMH
+  styles:
+    grid:
+      - background: var(--ha-card-background)
+    card:
+      - background: |
+          [[[
+            var wind_force = parseFloat(states["sensor.wind_force"].state)
+            if (wind_force <= 3) { return "transparent" }
+            if (wind_force <= 7) {
+              return "rgba(var(--rgb-primary-color)," + (wind_force / 7) + ")"
+            } else {
+              return "var(--accent-color)"
+            }
+          ]]]
+    icon:
+      - transform: '[[[ return "rotate(" + (180 + parseFloat(states["weather.buienradar"].attributes.wind_bearing)) + "deg)" ]]]'
