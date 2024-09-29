@@ -190,13 +190,17 @@ cards:
         update_interval: 10sec
         series:
           - entity: sensor.daily_energy_consumption_offpeak
-            name: Consumption Off Peak
-          - entity: sensor.daily_energy_consumption_peak
-            name: Consumption Peak
-          - entity: sensor.daily_energy_production_peak
-            name: Production Peak
+            name: Consumption Low Tariff
+            color: orange
           - entity: sensor.daily_energy_production_offpeak
-            name: Production Peak
+            name: Production Low Tariff
+            color: blue
+          - entity: sensor.daily_energy_consumption_peak
+            name: Consumption High Tariff
+            color: red
+          - entity: sensor.daily_energy_production_peak
+            name: Production High Tariff
+            color: green
         apex_config:
           chart:
             height: 500px
