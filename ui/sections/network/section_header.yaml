@@ -8,7 +8,7 @@ cards:
     content: >
       # Network
 
-      The Internet is {{ states('binary_sensor.estalor_com') }}
+      The Internet is {{ states('binary_sensor.ping_cloudflare') }}
       and {{ state_attr('group.total_number_of_devices_connected','entity_id') |count }} devices
       are connected.{%- if states('sensor.speedtest_download') !=
       'unavailable' -%}{{ ' ' }}The speed is {{ iif(
@@ -36,7 +36,6 @@ cards:
     view_layout:
       place-self: center auto
     cards:
-
       - type: 'custom:swipe-card'
         parameters: !include ../../layouts/parameters-page-title-swipe-card.yaml
         card_mod:
@@ -47,15 +46,31 @@ cards:
             states:
               "(max-width: 799.99px), (min-width: 1024px)": &title-badge-1
                 type: 'custom:mushroom-entity-card'
-                entity: binary_sensor.estalor_com
+                entity: binary_sensor.ping_cloudflare
                 name: WAN ↗
                 icon_color: pink
                 card_mod:
                   style: !include ../../layouts/style-page-title-swipe-card-tile.yaml
-                # TODO: no action working yet
-                # tap_action:
-                #   action: url
-                #   url_path: !secret modem_url
+                tap_action:
+                  action: url
+                  url_path: !secret my_server_url
               "(min-width: 800px) and (max-width: 1023.99px)":
                 <<: *title-badge-1
+                layout: vertical
+          - type: custom:state-switch
+            entity: mediaquery
+            states:
+              "(max-width: 799.99px), (min-width: 1024px)": &title-badge-2
+                type: 'custom:mushroom-entity-card'
+                entity: binary_sensor.my_router
+                name: Router ↗
+                icon: 'mdi:router-wireless'
+                icon_color: pink
+                card_mod:
+                  style: !include ../../layouts/style-page-title-swipe-card-tile.yaml
+                tap_action:
+                  action: url
+                  url_path: !secret router_url
+              "(min-width: 800px) and (max-width: 1023.99px)":
+                <<: *title-badge-2
                 layout: vertical

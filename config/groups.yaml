@@ -23,4 +23,5 @@ total_number_of_devices_connected:
     - device_tracker.tasmota_rfbridge
     - device_tracker.tasmota_smalllamp
     - device_tracker.tasmota_studyroomlight
-    - device_tracker.tp_linkdesktop
+    - device_tracker.tp_linkserverroomswitch
+    - device_tracker.tuyasmartplug1
