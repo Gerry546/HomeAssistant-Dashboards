@@ -25,3 +25,4 @@ total_number_of_devices_connected:
     - device_tracker.tasmota_studyroomlight
     - device_tracker.tp_linkserverroomswitch
     - device_tracker.tuyasmartplug1
+    - device_tracker.tuyasmartplug2

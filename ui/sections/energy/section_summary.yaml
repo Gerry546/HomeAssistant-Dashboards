@@ -55,6 +55,7 @@ cards:
             - sensor.all_media_total_energy
             - sensor.all_climate_total_energy
             - sensor.smart_plug_energy_1_daily
+            - sensor.smart_plug_energy_2_daily
             - other
         - entity_id: sensor.daily_energy_production_offpeak
           name: Return to Grid
@@ -67,6 +68,9 @@ cards:
           type: remaining_parent_state
         - entity_id: sensor.smart_plug_energy_1_daily
           name: HomePC
+          color: magenta
+        - entity_id: sensor.smart_plug_energy_2_daily
+          name: Garage Fridge + Freezer
           color: magenta
         - entity_id: sensor.all_lights_total_energy
           name: Lights

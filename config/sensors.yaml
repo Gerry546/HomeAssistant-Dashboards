@@ -29,3 +29,11 @@
   unit_time: h
   max_sub_interval:
     minutes: 5
+
+- platform: integration
+  name: Smart Plug Energy 2
+  source: sensor.smart_plug_2_power
+  unit_prefix: k
+  unit_time: h
+  max_sub_interval:
+    minutes: 5
