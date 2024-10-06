@@ -22,18 +22,11 @@
     - sensor.electricity_meter_power_consumption_phase_l2
     - sensor.electricity_meter_power_consumption_phase_l3
 
-- platform: integration
-  name: Smart Plug Energy 1
-  source: sensor.smart_plug_power_1
-  unit_prefix: k
-  unit_time: h
-  max_sub_interval:
-    minutes: 5
-
-- platform: integration
-  name: Smart Plug Energy 2
-  source: sensor.smart_plug_2_power
-  unit_prefix: k
-  unit_time: h
-  max_sub_interval:
-    minutes: 5
+- platform: group
+  name: Smart Plug All Values
+  type: sum
+  entities:
+    - sensor.smart_plug_1_power
+    - sensor.smart_plug_2_power
+    - sensor.smart_plug_3_power
+    - sensor.smart_plug_4_power

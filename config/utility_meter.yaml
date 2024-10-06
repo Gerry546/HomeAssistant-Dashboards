@@ -58,12 +58,22 @@ total_energy_use_hourly:
   source: sensor.total_energy_use_daily
   cycle: hourly
 
-smart_plug_power_daily_1:
-  name: Smart Plug Energy 1 (Daily)
-  source: sensor.smart_plug_energy_1
+smart_plug_1_electricity_daily:
+  name: Smart Plug 1 Electricity (Daily)
+  source: sensor.smart_plug_1_electricity
   cycle: daily
 
-smart_plug_power_daily_2:
-  name: Smart Plug Energy 2 (Daily)
-  source: sensor.smart_plug_energy_2
+smart_plug_2_electricity_daily:
+  name: Smart Plug 2 Electricity (Daily)
+  source: sensor.smart_plug_2_electricity
+  cycle: daily
+
+smart_plug_3_electricity_daily:
+  name: Smart Plug 3 Electricity (Daily)
+  source: sensor.smart_plug_3_electricity
+  cycle: daily
+
+smart_plug_4_electricity_daily:
+  name: Smart Plug 4 Electricity (Daily)
+  source: sensor.smart_plug_4_electricity
   cycle: daily
