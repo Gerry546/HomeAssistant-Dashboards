@@ -30,3 +30,35 @@
     - sensor.smart_plug_2_power
     - sensor.smart_plug_3_power
     - sensor.smart_plug_4_power
+
+- platform: integration
+  source: sensor.smart_plug_1_power
+  name: Smart Plug 1 Energy
+  unit_prefix: k
+  round: 2
+  max_sub_interval:
+    minutes: 5
+
+- platform: integration
+  source: sensor.smart_plug_2_power
+  name: Smart Plug 2 Energy
+  unit_prefix: k
+  round: 2
+  max_sub_interval:
+    minutes: 5
+
+- platform: integration
+  source: sensor.smart_plug_3_power
+  name: Smart Plug 3 Energy
+  unit_prefix: k
+  round: 2
+  max_sub_interval:
+    minutes: 5
+
+- platform: integration
+  source: sensor.smart_plug_4_power
+  name: Smart Plug 4 Energy
+  unit_prefix: k
+  round: 2
+  max_sub_interval:
+    minutes: 5
