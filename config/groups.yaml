@@ -28,3 +28,4 @@ total_number_of_devices_connected:
     - device_tracker.local_tuyasmartplug2
     - device_tracker.local_tuyasmartplug3
     - device_tracker.local_tuyasmartplug4
+    - device_tracker.hw_watermeter_19a35a

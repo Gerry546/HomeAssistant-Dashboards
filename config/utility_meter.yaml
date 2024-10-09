@@ -23,6 +23,11 @@ daily_gas:
   name: Daily Gas
   cycle: daily
 
+daily_water:
+  source: sensor.hw_watermeter_19a35a_total_water_usage
+  name: Daily Water
+  cycle: daily
+
 monthly_energy_tarif_1_rounded:
   source: sensor.electricity_meter_energy_consumption_tarif_1
   name: Monthly Energy (Offpeak)

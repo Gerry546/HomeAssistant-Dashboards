@@ -57,6 +57,7 @@ cards:
             - sensor.smart_plug_1_electricity_daily
             - sensor.smart_plug_2_electricity_daily
             - sensor.smart_plug_3_electricity_daily
+            - sensor.smart_plug_4_electricity_daily
             - other
         - entity_id: sensor.daily_energy_production_offpeak
           name: Return to Grid
@@ -74,7 +75,10 @@ cards:
           name: Garage Fridge + Freezer
           color: magenta
         - entity_id: sensor.smart_plug_3_electricity_daily
-          name: TV System
+          name: Oven
+          color: magenta
+        - entity_id: sensor.smart_plug_4_electricity_daily
+          name: Server System
           color: magenta
         - entity_id: sensor.all_lights_total_energy
           name: Lights

@@ -13,5 +13,6 @@ cards:
       - !include ../sections/energy/section_header.yaml
       - !include ../sections/energy/section_summary.yaml
       - !include ../sections/energy/section_power.yaml
-      - !include ../sections/energy/section_utilities.yaml
+      - !include ../sections/energy/section_gas.yaml
       - !include ../sections/energy/section_smartplugs.yaml
+      - !include ../sections/energy/section_water.yaml

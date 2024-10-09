@@ -6,12 +6,12 @@ cards:
   - type: 'custom:button-card'
     template: header_card_no_link
     variables:
-      name: ELECTRICITY
+      name: WATER
   
   - type: 'custom:auto-entities'
     filter:
       template: |
-        {% for sensor in expand('sensor.power_consumption_all_phases') -%}
+        {% for sensor in expand('sensor.daily_water') -%}
           {%- set name = state_attr(sensor.entity_id,"friendly_name") -%}
           {{
             { 'entity': sensor.entity_id,
@@ -23,7 +23,7 @@ cards:
                 {'entities': [sensor.entity_id]},
                 {'title': name},
                 {'lower_bound': 0},
-                {'upper_bound': '~2'},
+                {'upper_bound': '~4'},
                 {'height': 128},
                 {'show_extrema': true},
                 {'animate': true}
