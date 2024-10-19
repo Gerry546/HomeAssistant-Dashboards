@@ -1,0 +1,12 @@
+- url: /local/style.css
+  type: css
+- url: /hacsfiles/lovelace-card-mod/card-mod.js
+  type: module
+- url: /hacsfiles/lovelace-layout-card/layout-card.js
+  type: module
+- url: /hacsfiles/button-card/button-card.js
+  type: module
+- url: /hacsfiles/decluttering-card/decluttering-card.js
+  type: module
+- url: /hacsfiles/slider-button-card/slider-button-card.js
+  type: module
